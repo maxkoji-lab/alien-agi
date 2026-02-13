@@ -1,0 +1,58 @@
+┌────────────────────────┐
+                        │     External Triggers  │
+                        │────────────────────────│
+                        │ • Price change         │
+                        │ • Volume spike         │
+                        │ • Whale movement       │
+                        │ • Social mentions      │
+                        │ • Time-based (cron)    │
+                        └─────────────┬──────────┘
+                                      │
+                                      ▼
+┌─────────────────────────────────────────────────────────────┐
+│                     EVENT ROUTER                            │
+│  - Validates event                                          │
+│  - Normalizes data                                          │
+│  - Prevents spam loops                                      │
+└───────────────┬───────────────────────────────┬─────────────┘
+                │                               │
+                ▼                               ▼
+        ┌───────────────┐               ┌────────────────┐
+        │  PLANNER AGENT │               │ MEMORY ENGINE  │
+        │────────────────│               │────────────────│
+        │ • Decide intent│◄──────────────┤ • Vector DB    │
+        │ • Create tasks │               │ • SQL state    │
+        │ • Set priority │               │ • Wallet tags  │
+        └───────┬────────┘               └────────────────┘
+                │
+                ▼
+        ┌────────────────┐
+        │ EXECUTOR AGENT │
+        │────────────────│
+        │ • Calls tools  │
+        │ • Structured   │
+        │   outputs      │
+        └───────┬────────┘
+                │
+                ▼
+        ┌───────────────────────────────┐
+        │ TOOL REGISTRY                 │
+        │───────────────────────────────│
+        │ • Dexscreener API             │
+        │ • Bitquery / Helius           │
+        │ • X/Twitter poster            │
+        │ • Telegram bot                │
+        │ • Website updater             │
+        │ • Meme generator              │
+        └───────────────┬───────────────┘
+                        │
+                        ▼
+                ┌────────────────┐
+                │ OUTPUT LAYER   │
+                │────────────────│
+                │ • Daily Brief  │
+                │ • Raid Lines   │
+                │ • Meme Prompts │
+                │ • Lore Update  │
+                │ • Whale Alerts │
+                └────────────────┘
